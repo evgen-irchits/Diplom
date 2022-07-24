@@ -20,18 +20,17 @@ namespace Script.UI
         [SerializeField] private ImageSetting imageSetting;
         [SerializeField] private ImageList imageList;
         [SerializeField] private Image[] images;
-
-       // [Inject] private CardPoll poll;
+        [SerializeField] private Image[] clearCard;
+     
         private void Awake()
         {
             Initialize();
-            //var card = poll.Spawn();
             var pm = GameContext.Instance.SaveService.Load<SaverModel>();
-            Debug.Log(pm.row);
             var rom = pm.row;
             for (int i = 0; i < buttonLavel.Length; i++)
             {
-                var i1 = i;
+                var NLavel = i;
+                //Debug.Log(NLavel);
                 if (i < rom - 1)
                 {
                     buttonLavel[i].GetComponent<Image>().sprite = imageSetting.images[0];
@@ -47,24 +46,34 @@ namespace Script.UI
                 if (i<= rom - 1 ) buttonLavel[i].onClick.AddListener(() =>
                 {
                     GameContext.Instance.ShowView(nameof(GameRowUI));
-                    GameContext.Instance.Lave = i1;
+                    GameContext.Instance.Lave = NLavel;
                     float p = 120;
-                    decimal x = i1 / 3;
+                    decimal x = NLavel / 3;
                     x = Math.Truncate(x);
-                    //Debug.Log(x);
+                    int x1 = Convert.ToInt32(x);
+                    int[] image = new int[x1+3];
+                    image[0] = Random.Range(0, 62);
                     for (int j = 0; j < x + 3; j++)
                     {
                         images[j].gameObject.SetActive(true);
+                        clearCard[j].gameObject.SetActive(true);
+                        clearCard[j].GetComponent<ClearCard>().NN = j;
                         images[j].GetComponent<Card.Card>().active = true;
-                        images[j].GetComponent<Image>().sprite = imageList.images[Random.Range(0, 62)];
+                        images[j].GetComponent<Card.Card>().NN = j;
+                        image[j] = Random.Range(0, 62);
+                        if (j != 0)
+                        {
+                            if (image[j] != image[j - 1])
+                                images[j].GetComponent<Image>().sprite = imageList.images[image[j]];
+                            else images[j].GetComponent<Image>().sprite = imageList.images[Random.Range(0, 62)];
+                        }
+                        else images[j].GetComponent<Image>().sprite = imageList.images[Random.Range(0, 62)];
                         images[j].gameObject.transform.DOMove(new Vector3(p, 865), .9f);
-                        //var card = poll.Spawn();
-                       // card.transform.DOMove(new Vector3(p, 865), 2f);
-                        //card.GetComponent<Image>().sprite = imageList.images[Random.Range(0, 62)];
+                        clearCard[j].gameObject.transform.DOMove(new Vector3(p, 865), .9f);
                         p = p + 220;
                         
                     }
-
+                    
                 });
             }
             
@@ -75,7 +84,7 @@ namespace Script.UI
 
            
         }
-
+        
         public override string ViewName => nameof(GameRowLavelUi);
     }
 }

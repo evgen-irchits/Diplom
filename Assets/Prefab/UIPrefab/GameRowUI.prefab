@@ -92,8 +92,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backButton: {fileID: 6132263211609524249}
+  verifyButton: {fileID: 7782764837457708628}
   images: []
-  timer: {fileID: 0}
+  clearCard: []
   panel: {fileID: 1036015283409599329}
 --- !u!1 &1036015283409599329
 GameObject:
