@@ -10,19 +10,20 @@ namespace Script.UI
     public class StartUI : UIView
     {
         [SerializeField] private Button startButton;
-
-       private SaverModel _saveService = new SaverModel();
+        [SerializeField] private Button settingButton;
+         private SaverModel _saveService = new SaverModel();
         private void Start()
         {
             Initialize();
             
             startButton.onClick.AddListener(() =>
             {
-                var sm = GameContext.Instance.SaveService.Load<SaverModel>();
-                sm.row = 10;
-                GameContext.Instance.SaveService.Write(sm);
+                //var sm = GameContext.Instance.SaveService.Load<SaverModel>();
+                //sm.row = 1;
+                //GameContext.Instance.SaveService.Write(sm);
                 GameContext.Instance.ShowView(nameof(VariantGameUI));
             });
+            settingButton.onClick.AddListener(() =>  GameContext.Instance.ShowView(nameof(SetingUI)));
         }
         
         public override string ViewName => nameof(StartUI);

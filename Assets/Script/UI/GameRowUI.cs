@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Script.Card;
 using Script.Core;
+using Script.Models;
+using Script.Service;
 using Script.UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,21 +18,20 @@ public class GameRowUI : UIView
     [SerializeField] private Image[] images;
     [SerializeField] private Image[] clearCard;
     [SerializeField] private GameObject panel;
+    private SaverModel _saveService = new SaverModel();
     private RectTransform rectTransfrom;
     private float timerStart = 5;
     private int timerStart2;
     private void Start()
     {
+        
         Initialize();
         
         backButton.onClick.AddListener(() =>
         {
             for (int i = 0; i < images.Length; i++)
             {
-                images[i].gameObject.SetActive(false);
-                clearCard[i].gameObject.SetActive(false);
-                images[i].gameObject.transform.DOMove(new Vector3(0,0,0),0.1f);
-                images[i].gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+                closeCard();
                 timerStart = 5;
             }
 
@@ -53,22 +54,15 @@ public class GameRowUI : UIView
             }
             if (r == 36)
             {
-                for (int i = 0; i < images.Length; i++)
-                {
-                    images[i].gameObject.SetActive(false);
-                    clearCard[i].gameObject.SetActive(false);
-                    images[i].gameObject.transform.DOMove(new Vector3(0,0,0),0.1f);
-                }
+                closeCard();
+                var sm = GameContext.Instance.SaveService.Load<SaverModel>();
+                sm.row = sm.row + 1;
+                GameContext.Instance.SaveService.Write(sm);
                 GameContext.Instance.ShowView(nameof(GameViktoryUI));
             }
             else
             {
-                for (int i = 0; i < images.Length; i++)
-                {
-                    images[i].gameObject.SetActive(false);
-                    clearCard[i].gameObject.SetActive(false);
-                    images[i].gameObject.transform.DOMove(new Vector3(0,0,0),0.1f);
-                }
+                closeCard();
                 GameContext.Instance.ShowView(nameof(GameOverUI));
             }
         });
@@ -100,7 +94,15 @@ public class GameRowUI : UIView
         }
     }
 
-    
-
+    private void closeCard()
+    {
+        for (int i = 0; i < images.Length; i++)
+        {
+            images[i].gameObject.SetActive(false);
+            clearCard[i].gameObject.SetActive(false);
+            images[i].gameObject.transform.DOMove(new Vector3(0,0,0),0.1f);
+            images[i].gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+    }
     public override string ViewName => nameof(GameRowUI);
 }

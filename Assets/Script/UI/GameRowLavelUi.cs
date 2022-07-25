@@ -21,7 +21,7 @@ namespace Script.UI
         [SerializeField] private ImageList imageList;
         [SerializeField] private Image[] images;
         [SerializeField] private Image[] clearCard;
-     
+
         private void Awake()
         {
             Initialize();
@@ -47,7 +47,7 @@ namespace Script.UI
                 {
                     GameContext.Instance.ShowView(nameof(GameRowUI));
                     GameContext.Instance.Lave = NLavel;
-                    float p = 120;
+                    float p = 120, p1 = 120, p2 = 120;
                     decimal x = NLavel / 3;
                     x = Math.Truncate(x);
                     int x1 = Convert.ToInt32(x);
@@ -57,9 +57,7 @@ namespace Script.UI
                     {
                         images[j].gameObject.SetActive(true);
                         clearCard[j].gameObject.SetActive(true);
-                        clearCard[j].GetComponent<ClearCard>().NN = j;
                         images[j].GetComponent<Card.Card>().active = true;
-                        images[j].GetComponent<Card.Card>().NN = j;
                         image[j] = Random.Range(0, 62);
                         if (j != 0)
                         {
@@ -68,10 +66,26 @@ namespace Script.UI
                             else images[j].GetComponent<Image>().sprite = imageList.images[Random.Range(0, 62)];
                         }
                         else images[j].GetComponent<Image>().sprite = imageList.images[Random.Range(0, 62)];
-                        images[j].gameObject.transform.DOMove(new Vector3(p, 865), .9f);
-                        clearCard[j].gameObject.transform.DOMove(new Vector3(p, 865), .9f);
-                        p = p + 220;
-                        
+
+                        if (j <= 8)
+                        {
+                            images[j].gameObject.transform.DOMove(new Vector3(p, 900), .9f);
+                            clearCard[j].gameObject.transform.DOMove(new Vector3(p, 900), .9f);
+                            p = p + 200;
+                        }
+                        else if (j > 8 && j <= 16)
+                        {
+                            images[j].gameObject.transform.DOMove(new Vector3(p1, 690), .9f);
+                            clearCard[j].gameObject.transform.DOMove(new Vector3(p1, 690), .9f);
+                            p1 = p1 + 200;
+                        }
+                        else
+                        {
+                            images[j].gameObject.transform.DOMove(new Vector3(p2, 480), .9f);
+                            clearCard[j].gameObject.transform.DOMove(new Vector3(p2, 480), .9f);
+                            p2 = p2 + 200;
+                        }
+
                     }
                     
                 });
