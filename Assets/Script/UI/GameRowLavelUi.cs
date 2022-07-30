@@ -21,6 +21,7 @@ namespace Script.UI
         [SerializeField] private ImageList imageList;
         [SerializeField] private Image[] images;
         [SerializeField] private Image[] clearCard;
+        
 
         private void Awake()
         {
@@ -43,7 +44,7 @@ namespace Script.UI
                 {
                     buttonLavel[i].GetComponent<Image>().sprite = imageSetting.images[2];
                 }
-                if (i<= rom - 1 ) buttonLavel[i].onClick.AddListener(() =>
+                if (i<= rom - 1) buttonLavel[i].onClick.AddListener(() =>
                 {
                     GameContext.Instance.ShowView(nameof(GameRowUI));
                     GameContext.Instance.Lave = NLavel;
@@ -58,14 +59,14 @@ namespace Script.UI
                         images[j].gameObject.SetActive(true);
                         clearCard[j].gameObject.SetActive(true);
                         images[j].GetComponent<Card.Card>().active = true;
-                        image[j] = Random.Range(0, 62);
+                        image[j] = Random.Range(0, imageList.images.Length);
                         if (j != 0)
                         {
                             if (image[j] != image[j - 1])
                                 images[j].GetComponent<Image>().sprite = imageList.images[image[j]];
-                            else images[j].GetComponent<Image>().sprite = imageList.images[Random.Range(0, 62)];
+                            else images[j].GetComponent<Image>().sprite = imageList.images[Random.Range(0, imageList.images.Length)];
                         }
-                        else images[j].GetComponent<Image>().sprite = imageList.images[Random.Range(0, 62)];
+                        else images[j].GetComponent<Image>().sprite = imageList.images[Random.Range(0, imageList.images.Length)];
 
                         if (j <= 8)
                         {

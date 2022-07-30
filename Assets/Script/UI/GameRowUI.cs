@@ -18,9 +18,10 @@ public class GameRowUI : UIView
     [SerializeField] private Image[] images;
     [SerializeField] private Image[] clearCard;
     [SerializeField] private GameObject panel;
+    [SerializeField] private GameContext gameContext;
     private SaverModel _saveService = new SaverModel();
     private RectTransform rectTransfrom;
-    private float timerStart = 5;
+    public float timerStart = 5;
     private int timerStart2;
     private void Start()
     {
@@ -54,11 +55,19 @@ public class GameRowUI : UIView
             }
             if (r == 36)
             {
-                closeCard();
                 var sm = GameContext.Instance.SaveService.Load<SaverModel>();
-                sm.row = sm.row + 1;
-                GameContext.Instance.SaveService.Write(sm);
-                GameContext.Instance.ShowView(nameof(GameViktoryUI));
+                int sl = sm.row;
+                if (sl == gameContext.Lave + 1)
+                {
+                    sm.row = sm.row + 1;
+                    GameContext.Instance.SaveService.Write(sm);
+                    GameContext.Instance.ShowView(nameof(GameViktoryUI));
+                }
+                else
+                {
+                    GameContext.Instance.ShowView(nameof(GameViktoryUI));
+                }
+                closeCard();
             }
             else
             {
