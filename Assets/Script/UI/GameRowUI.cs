@@ -19,10 +19,11 @@ public class GameRowUI : UIView
     [SerializeField] private Image[] clearCard;
     [SerializeField] private GameObject panel;
     [SerializeField] private GameContext gameContext;
-    private SaverModel _saveService = new SaverModel();
+    [SerializeField] private Text timerText;
     private RectTransform rectTransfrom;
-    public float timerStart = 5;
+    public float timerStart = 6;
     private int timerStart2;
+    public int r = 36;
     private void Start()
     {
         
@@ -33,7 +34,7 @@ public class GameRowUI : UIView
             for (int i = 0; i < images.Length; i++)
             {
                 closeCard();
-                timerStart = 5;
+                timerStart = 6;
             }
 
             GetComponent<GameRowUI>().StopAllCoroutines();
@@ -42,15 +43,12 @@ public class GameRowUI : UIView
         
         verifyButton.onClick.AddListener(() =>
         {
-            int r = 36;
+            
             for (int i = 0; i < images.Length; i++)
             {
-                if (images[i].GetComponent<Card>().active == true)
+                if ((images[i].GetComponent<Card>().active == true)&&(images[i].gameObject.transform.position != clearCard[i].gameObject.transform.position))
                 {
-                    if (images[i].gameObject.transform.position != clearCard[i].gameObject.transform.position)
-                    {
-                        r--;
-                    }
+                    r--;
                 }
             }
             if (r == 36)
@@ -88,9 +86,10 @@ public class GameRowUI : UIView
     {
         timerStart -= Time.deltaTime;
         timerStart2 = (int) Mathf.Round((float) Convert.ToDouble(timerStart));
-        
+        timerText.text = timerStart2.ToString();
         if (timerStart2 == 0)
         {
+            timerText.text = "0";
             for (int i = 0; i < images.Length; i++)
             {
                 if (images[i].GetComponent<Card>().active == true)
@@ -100,7 +99,8 @@ public class GameRowUI : UIView
                 }
 
             }
-        }
+        }else if (timerStart2 <= 0) {timerText.text = "0";}
+        
     }
 
     private void closeCard()
@@ -109,6 +109,7 @@ public class GameRowUI : UIView
         {
             images[i].gameObject.SetActive(false);
             clearCard[i].gameObject.SetActive(false);
+            images[i].GetComponent<Card>().active = false;
             images[i].gameObject.transform.DOMove(new Vector3(0,0,0),0.1f);
             images[i].gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
         }

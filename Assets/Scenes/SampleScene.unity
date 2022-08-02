@@ -13627,6 +13627,10 @@ PrefabInstance:
       value: -385.4999
       objectReference: {fileID: 0}
     - target: {fileID: 6252783417299834146, guid: c6ce2db020b189847b2d808c15baf1ff, type: 3}
+      propertyPath: gameRowUI
+      value: 
+      objectReference: {fileID: 1273340075}
+    - target: {fileID: 6252783417299834146, guid: c6ce2db020b189847b2d808c15baf1ff, type: 3}
       propertyPath: imageSetting
       value: 
       objectReference: {fileID: 11400000, guid: 0234301bb512e0545979ae7937836ea5, type: 2}
