@@ -10,6 +10,9 @@ namespace Script.UI
         [SerializeField] private Button rowButton;
         [SerializeField] private Button addButton;
         [SerializeField] private Button disappearedButton;
+        [SerializeField] private Button infoRowButton;
+        [SerializeField] private Button infoAddButton;
+        [SerializeField] private Button infoDisappearedButton;
         private void Start()
         {
             Initialize();
@@ -25,6 +28,18 @@ namespace Script.UI
             disappearedButton.onClick.AddListener(() =>
             {
                 GameContext.Instance.ShowView(nameof(GameDisappearedLavelUi));
+            });
+            infoRowButton.onClick.AddListener(() =>
+            {
+                GameContext.Instance.ShowView(nameof(InfoRowUI));
+            });
+            infoAddButton.onClick.AddListener(() =>
+            {
+                GameContext.Instance.ShowView(nameof(InfoAppeared));
+            });
+            infoDisappearedButton.onClick.AddListener(() =>
+            {
+                GameContext.Instance.ShowView(nameof(InfoDisppeared));
             });
         }
         public override string ViewName => nameof(VariantGameUI);

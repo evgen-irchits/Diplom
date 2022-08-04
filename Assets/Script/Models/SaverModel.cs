@@ -9,7 +9,7 @@ namespace Script.Models
         public string name;
         public int age = 3;
         public int row = 5;
-        public int appeared = 1;
-        public int disappeared = 1;
+        public int appeared = 2;
+        public int disappeared = 3;
     }
 }

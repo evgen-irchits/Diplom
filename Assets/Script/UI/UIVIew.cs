@@ -17,7 +17,7 @@ namespace Script.UI
         public Tweener Show()
         {
             gameObject.SetActive(true);
-            return transform.DOScale(1f, .5f);
+            return transform.DOBlendableScaleBy(new Vector3(1,1,1),.5f); //transform.DOScale(1f, .5f);
         }
 
         public Tweener Hide()

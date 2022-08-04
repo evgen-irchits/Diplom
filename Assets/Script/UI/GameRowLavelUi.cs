@@ -78,29 +78,10 @@ namespace Script.UI
 
                         for (int j = 0; j < x + 3; j++)
                         {
-                            images[j].gameObject.SetActive(true);
-                            clearCard[j].gameObject.SetActive(true);
-                            images[j].GetComponent<Card.Card>().active = true;
                             images[j].GetComponent<Image>().sprite = imageList.images[image[j]];
-                            if (j <= 8)
-                            {
-                                images[j].gameObject.transform.DOMove(new Vector3(p, 900), .9f);
-                                clearCard[j].gameObject.transform.DOMove(new Vector3(p, 900), .9f);
-                                p = p + 200;
-                            }
-                            else if (j > 8 && j <= 16)
-                            {
-                                images[j].gameObject.transform.DOMove(new Vector3(p1, 690), .9f);
-                                clearCard[j].gameObject.transform.DOMove(new Vector3(p1, 690), .9f);
-                                p1 = p1 + 200;
-                            }
-                            else
-                            {
-                                images[j].gameObject.transform.DOMove(new Vector3(p2, 480), .9f);
-                                clearCard[j].gameObject.transform.DOMove(new Vector3(p2, 480), .9f);
-                                p2 = p2 + 200;
-                            }
                         }
+
+                        wiev(x);
                     });
             }
             
@@ -110,6 +91,35 @@ namespace Script.UI
             });
 
            
+        }
+
+        private void wiev(decimal x)
+        {
+            float p = 120, p1 = 120, p2 = 120;
+            for (int j = 0; j < x + 3; j++)
+            {
+                images[j].gameObject.SetActive(true);
+                clearCard[j].gameObject.SetActive(true);
+                images[j].GetComponent<Card.Card>().active = true;
+                if (j <= 8)
+                {
+                    images[j].gameObject.transform.DOMove(new Vector3(p, 900), .9f);
+                    clearCard[j].gameObject.transform.DOMove(new Vector3(p, 900), .9f);
+                    p = p + 200;
+                }
+                else if (j > 8 && j <= 16)
+                {
+                    images[j].gameObject.transform.DOMove(new Vector3(p1, 690), .9f);
+                    clearCard[j].gameObject.transform.DOMove(new Vector3(p1, 690), .9f);
+                    p1 = p1 + 200;
+                }
+                else
+                {
+                    images[j].gameObject.transform.DOMove(new Vector3(p2, 480), .9f);
+                    clearCard[j].gameObject.transform.DOMove(new Vector3(p2, 480), .9f);
+                    p2 = p2 + 200;
+                }
+            }
         }
         
         public override string ViewName => nameof(GameRowLavelUi);

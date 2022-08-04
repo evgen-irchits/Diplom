@@ -18,9 +18,9 @@ namespace Script.UI
             
             startButton.onClick.AddListener(() =>
             {
-                //var sm = GameContext.Instance.SaveService.Load<SaverModel>();
-                //sm.row = 1;
-                //GameContext.Instance.SaveService.Write(sm);
+                var sm = GameContext.Instance.SaveService.Load<SaverModel>();
+                sm.disappeared = 3;
+                GameContext.Instance.SaveService.Write(sm);
                 GameContext.Instance.ShowView(nameof(VariantGameUI));
             });
             settingButton.onClick.AddListener(() =>  GameContext.Instance.ShowView(nameof(SetingUI)));
