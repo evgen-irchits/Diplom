@@ -25,6 +25,7 @@ namespace Script.UI
             var disappeared = pm.disappeared;
             for (int i = 0; i < buttonLavel.Length; i++)
             {
+                
                 var NLavel = i;
 
                 if (i < disappeared - 1)
@@ -47,22 +48,23 @@ namespace Script.UI
                         float p = 120, p1 = 120, p2 = 120;
                         decimal x = NLavel / 3;
                         x = Math.Truncate(x);
-                        int x1 = Convert.ToInt32(x);
-                        int[] image = new int[x1 + 3];
-                        int maxNumbr = image[0];
+                        TempClass.Ncard = Convert.ToInt32(x);
+                        //int x1 = Convert.ToInt32(x);
+                        //int[] image = new int[x1 + 3];
+                        int maxNumbr = TempClass.image[0];
                         for (int j = 0; j < x + 3; j++)
                         {
-                            image[j] = Random.Range(0, imageList.images.Length - 6);
-                            if (image[j] > maxNumbr) maxNumbr = image[j];
+                            TempClass.image[j] = Random.Range(0, imageList.images.Length - 6);
+                            if (TempClass.image[j] > maxNumbr) maxNumbr = TempClass.image[j];
                         }
 
                         for (int j = 0; j < x + 3; j++)
                         {
-                            for (int k = 0; k < image.Length; k++)
+                            for (int k = 0; k < TempClass.image.Length; k++)
                             {
-                                if (image[j] == image[k])
+                                if (TempClass.image[j] == TempClass.image[k])
                                 {
-                                    image[k] = maxNumbr;
+                                    TempClass.image[k] = maxNumbr;
                                     maxNumbr++;
                                 }
                             }
@@ -70,7 +72,7 @@ namespace Script.UI
 
                         for (int j = 0; j < x + 3; j++)
                         {
-                            images[j].GetComponent<Image>().sprite = imageList.images[image[j]];
+                            images[j].GetComponent<Image>().sprite = imageList.images[TempClass.image[j]];
                         }
 
                         wiev(x);

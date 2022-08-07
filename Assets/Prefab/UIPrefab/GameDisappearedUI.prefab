@@ -118,6 +118,8 @@ MonoBehaviour:
   backButton: {fileID: 1531450794845646712}
   images: []
   clearCard: []
+  newCard: []
+  imageList: {fileID: 11400000, guid: 62fbe2eaae74d4147bf20b099d58ac64, type: 2}
   timerText: {fileID: 2268424104005205653}
   timerStart: 6
 --- !u!1 &2698864551374456582
@@ -303,7 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

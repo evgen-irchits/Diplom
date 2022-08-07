@@ -1,9 +1,12 @@
+using Script.Core;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Script.UI
 {
     public class GameAppearedLavelUi : UIView
     {
+        [SerializeField] private Button backButton;
         // Start is called before the first frame update
         void Start()
         {
@@ -18,6 +21,8 @@ namespace Script.UI
         private void Awake()
         {
             Initialize();
+            
+            backButton.onClick.AddListener(() => { GameContext.Instance.ShowView(nameof(VariantGameUI)); });
         }
         public override string ViewName => nameof(GameAppearedLavelUi);
     }
