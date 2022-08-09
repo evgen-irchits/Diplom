@@ -37,6 +37,7 @@ namespace Script.Core
             var tweener = _currentView.Hide();
             tweener.onComplete += () =>
             {
+                
                 _currentView = views.First(v => v.ViewName == viewName);
                 _currentView.Show();
             };

@@ -2,6 +2,7 @@
 using DG.Tweening;
 using Script.Core;
 using Script.Service;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -11,6 +12,7 @@ namespace Script.UI
     public class GameDisappearedUI : UIView
     {
         [SerializeField] private Button backButton;
+        [SerializeField] private Button okButton;
         [SerializeField] private Image[] images;
         [SerializeField] private Image[] clearCard;
         [SerializeField] private Image[] newCard;
@@ -33,6 +35,16 @@ namespace Script.UI
 
                 GetComponent<GameDisappearedUI>().StopAllCoroutines();
                 GameContext.Instance.ShowView(nameof(GameDisappearedLavelUi));
+            });
+            okButton.onClick.AddListener(() =>
+            {
+                int rezult = 0;
+                for (int i = 0; i < TempClass.Ncard + 3; i++)
+                {
+                    if (images[i].gameObject.transform.position.y > 101) rezult++;
+                }
+                if (rezult == TempClass.Ncard+3) GameContext.Instance.ShowView(nameof(GameViktoryUI));
+                else GameContext.Instance.ShowView(nameof(GameOverUI));
             });
         }
 
@@ -117,8 +129,12 @@ namespace Script.UI
                 images[i].gameObject.transform.DOMove(new Vector3(0, 0, 0), 0.1f);
                 images[i].gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
             }
-        }
 
+            for (int i = 0; i < newCard.Length; i++)
+            {
+                newCard[i].gameObject.SetActive(false);
+            }
+        }
         public override string ViewName => nameof(GameDisappearedUI);
     }
 }

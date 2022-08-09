@@ -1,5 +1,6 @@
 using System;
 using Script.Core;
+using Script.Service;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,14 +20,17 @@ namespace Script.UI
             
             rowButton.onClick.AddListener(() =>
             {
+                TempClass.variantGame = 1;
                 GameContext.Instance.ShowView(nameof(GameRowLavelUi));
             });
             addButton.onClick.AddListener(() =>
             {
+                TempClass.variantGame = 2;
                 GameContext.Instance.ShowView(nameof(GameAppearedLavelUi));
             });
             disappearedButton.onClick.AddListener(() =>
             {
+                TempClass.variantGame = 3;
                 GameContext.Instance.ShowView(nameof(GameDisappearedLavelUi));
             });
             infoRowButton.onClick.AddListener(() =>
