@@ -1,6 +1,7 @@
 ﻿using System;
 using DG.Tweening;
 using Script.Core;
+using Script.Models;
 using Script.Service;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,9 +19,11 @@ namespace Script.UI
         [SerializeField] private Image[] newCard;
         [SerializeField] private ImageList imageList;
         [SerializeField] private Text timerText;
+        [SerializeField] private GameContext gameContext;
         public float timerStart = 6;
         private int timerStart2;
         private int active = 0;
+        public int r = 36;
 
         private void Start()
         {
@@ -38,13 +41,37 @@ namespace Script.UI
             });
             okButton.onClick.AddListener(() =>
             {
-                int rezult = 0;
-                for (int i = 0; i < TempClass.Ncard + 3; i++)
+                for (int i = 0; i < images.Length; i++)
                 {
-                    if (images[i].gameObject.transform.position.y > 101) rezult++;
+                    if ((images[i].GetComponent<Card.Card>().active == true) && (images[i].gameObject.transform.position.y !=
+                                                                            clearCard[i].gameObject.transform.position.y))
+                    {
+                        r--;
+                    }
                 }
-                if (rezult == TempClass.Ncard+3) GameContext.Instance.ShowView(nameof(GameViktoryUI));
-                else GameContext.Instance.ShowView(nameof(GameOverUI));
+
+                if (r == 36)
+                {
+                    var sm = GameContext.Instance.SaveService.Load<SaverModel>();
+                    int sl = sm.disappeared;
+                    if (sl == gameContext.Lave + 1)
+                    {
+                        sm.disappeared = sm.disappeared + 1;
+                        GameContext.Instance.SaveService.Write(sm);
+                        GameContext.Instance.ShowView(nameof(GameViktoryUI));
+                    }
+                    else
+                    {
+                        GameContext.Instance.ShowView(nameof(GameViktoryUI));
+                    }
+
+                    closeCard();
+                }
+                else
+                {
+                    closeCard();
+                    GameContext.Instance.ShowView(nameof(GameOverUI));
+                }
             });
         }
 
@@ -76,11 +103,11 @@ namespace Script.UI
                             clearCard[i].gameObject.transform.position.z), 0.01f);
                 }
 
-                int[] m = new int[TempClass.image.Length];
+                int[] m = new int[TempClass.Ncard+3];
                 int x = 0;
-                while (x < TempClass.image.Length)
+                while (x < TempClass.Ncard+3)
                 {
-                    int temp = Random.Range(0, TempClass.image.Length);
+                    int temp = Random.Range(0, TempClass.Ncard+3);
                     if (m[temp] == 0)
                     {
                         m[temp] = x;
@@ -89,7 +116,7 @@ namespace Script.UI
                 }
                 
                 
-                for (int i = 0; i < TempClass.image.Length; i++)
+                for (int i = 0; i < TempClass.Ncard+3; i++)
                 {
                     images[i].gameObject.transform.DOMove(
                         new Vector3(clearCard[m[i]].gameObject.transform.position.x,

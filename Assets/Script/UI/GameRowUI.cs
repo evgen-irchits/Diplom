@@ -43,14 +43,15 @@ public class GameRowUI : UIView
         
         verifyButton.onClick.AddListener(() =>
         {
-            
             for (int i = 0; i < images.Length; i++)
             {
-                if ((images[i].GetComponent<Card>().active == true)&&(images[i].gameObject.transform.position != clearCard[i].gameObject.transform.position))
+                if ((images[i].GetComponent<Card>().active == true) && (images[i].gameObject.transform.position !=
+                                                                        clearCard[i].gameObject.transform.position))
                 {
                     r--;
                 }
             }
+
             if (r == 36)
             {
                 var sm = GameContext.Instance.SaveService.Load<SaverModel>();
@@ -65,6 +66,7 @@ public class GameRowUI : UIView
                 {
                     GameContext.Instance.ShowView(nameof(GameViktoryUI));
                 }
+
                 closeCard();
             }
             else

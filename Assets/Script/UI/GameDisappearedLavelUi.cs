@@ -17,6 +17,7 @@ namespace Script.UI
         [SerializeField] private ImageList imageList;
         [SerializeField] private Image[] images;
         [SerializeField] private Image[] clearCard;
+        [SerializeField] private GameDisappearedUI gameDisappearedUI;
 
         void Start()
         {
@@ -45,12 +46,13 @@ namespace Script.UI
                     buttonLavel[i].onClick.AddListener(() =>
                     {
                         GameContext.Instance.ShowView(nameof(GameDisappearedUI));
+                        GameContext.Instance.Lave = NLavel;
+                        gameDisappearedUI.timerStart = 6;
+                        gameDisappearedUI.r = 36;
                         float p = 120, p1 = 120, p2 = 120;
                         decimal x = NLavel / 3;
                         x = Math.Truncate(x);
                         TempClass.Ncard = Convert.ToInt32(x);
-                        //int x1 = Convert.ToInt32(x);
-                        //int[] image = new int[x1 + 3];
                         int maxNumbr = TempClass.image[0];
                         for (int j = 0; j < x + 3; j++)
                         {

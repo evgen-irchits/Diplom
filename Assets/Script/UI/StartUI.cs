@@ -11,7 +11,6 @@ namespace Script.UI
     {
         [SerializeField] private Button startButton;
         [SerializeField] private Button settingButton;
-         private SaverModel _saveService = new SaverModel();
         private void Start()
         {
             Initialize();
@@ -19,7 +18,7 @@ namespace Script.UI
             startButton.onClick.AddListener(() =>
             {
                 var sm = GameContext.Instance.SaveService.Load<SaverModel>();
-                sm.disappeared = 3;
+                sm.appeared = 4;
                 GameContext.Instance.SaveService.Write(sm);
                 GameContext.Instance.ShowView(nameof(VariantGameUI));
             });
