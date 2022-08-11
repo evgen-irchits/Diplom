@@ -26,7 +26,7 @@ namespace Script.UI
             for (int i = 0; i < buttonLavel.Length; i++)
             {
                 
-                var NLavel = i;
+                var nLevel = i;
 
                 if (i < appeared - 1)
                 {
@@ -45,11 +45,11 @@ namespace Script.UI
                     buttonLavel[i].onClick.AddListener(() =>
                     {
                         GameContext.Instance.ShowView(nameof(GameAppearedUI));
-                        GameContext.Instance.Lave = NLavel;
+                        GameContext.Instance.Lave = nLevel;
                         gameAppearedUI.timerStart = 6;
                         gameAppearedUI.r = 36;
                         float p = 120, p1 = 120, p2 = 120;
-                        decimal x = NLavel / 3;
+                        decimal x = nLevel / 3;
                         x = Math.Truncate(x);
                         TempClass.Ncard = Convert.ToInt32(x);
                         int maxNumbr = TempClass.image[0];
