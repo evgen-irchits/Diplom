@@ -124,15 +124,6 @@ namespace Script.UI
                 }
             });
         }
-
-        void Update()
-        {
-        
-        }
-        private void Awake()
-        {
-            
-        }
         public override string ViewName => nameof(GameOverUI);
     }
 }

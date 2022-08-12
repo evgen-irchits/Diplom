@@ -18,7 +18,7 @@ namespace Script.UI
             startButton.onClick.AddListener(() =>
             {
                 var sm = GameContext.Instance.SaveService.Load<SaverModel>();
-                sm.appeared = 4;
+                sm.appeared = 7;
                 GameContext.Instance.SaveService.Write(sm);
                 GameContext.Instance.ShowView(nameof(VariantGameUI));
             });

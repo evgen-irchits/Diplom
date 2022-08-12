@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11161,8 +11161,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 62fbe2eaae74d4147bf20b099d58ac64, type: 2}
     - target: {fileID: 8772680897397446469, guid: b0a6e4cb1003df04fb8465766b1063ab, type: 3}
+      propertyPath: gameAppearedUI
+      value: 
+      objectReference: {fileID: 7993000047558628255}
+    - target: {fileID: 8772680897397446469, guid: b0a6e4cb1003df04fb8465766b1063ab, type: 3}
+      propertyPath: gameDisappearedUI
+      value: 
+      objectReference: {fileID: 4214856233682206248}
+    - target: {fileID: 8772680897397446469, guid: b0a6e4cb1003df04fb8465766b1063ab, type: 3}
       propertyPath: images.Array.size
       value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8772680897397446469, guid: b0a6e4cb1003df04fb8465766b1063ab, type: 3}
+      propertyPath: newCard.Array.size
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8772680897397446469, guid: b0a6e4cb1003df04fb8465766b1063ab, type: 3}
       propertyPath: clearCard.Array.size
@@ -11312,6 +11324,30 @@ PrefabInstance:
       propertyPath: images.Array.data[35]
       value: 
       objectReference: {fileID: 321231351}
+    - target: {fileID: 8772680897397446469, guid: b0a6e4cb1003df04fb8465766b1063ab, type: 3}
+      propertyPath: newCard.Array.data[0]
+      value: 
+      objectReference: {fileID: 293076068}
+    - target: {fileID: 8772680897397446469, guid: b0a6e4cb1003df04fb8465766b1063ab, type: 3}
+      propertyPath: newCard.Array.data[1]
+      value: 
+      objectReference: {fileID: 540017489}
+    - target: {fileID: 8772680897397446469, guid: b0a6e4cb1003df04fb8465766b1063ab, type: 3}
+      propertyPath: newCard.Array.data[2]
+      value: 
+      objectReference: {fileID: 1790357942}
+    - target: {fileID: 8772680897397446469, guid: b0a6e4cb1003df04fb8465766b1063ab, type: 3}
+      propertyPath: newCard.Array.data[3]
+      value: 
+      objectReference: {fileID: 749422439}
+    - target: {fileID: 8772680897397446469, guid: b0a6e4cb1003df04fb8465766b1063ab, type: 3}
+      propertyPath: newCard.Array.data[4]
+      value: 
+      objectReference: {fileID: 1822145962}
+    - target: {fileID: 8772680897397446469, guid: b0a6e4cb1003df04fb8465766b1063ab, type: 3}
+      propertyPath: newCard.Array.data[5]
+      value: 
+      objectReference: {fileID: 2144777038}
     - target: {fileID: 8772680897397446469, guid: b0a6e4cb1003df04fb8465766b1063ab, type: 3}
       propertyPath: clearCard.Array.data[0]
       value: 
@@ -17574,7 +17610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7993000047771827015, guid: 14ca0b2bcbb7e00478872eb7e3068909, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8240618128852584468, guid: 14ca0b2bcbb7e00478872eb7e3068909, type: 3}
       propertyPath: imageList

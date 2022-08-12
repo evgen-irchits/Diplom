@@ -24,6 +24,7 @@ namespace Script.Card
             //Debug.Log("OnBeginD");
             _canvasGroup.alpha = .6f;
             _canvasGroup.blocksRaycasts = false;
+            
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -34,9 +35,15 @@ namespace Script.Card
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            //Debug.Log("OnEndD");
+            
+            Debug.Log(gameObject.transform.position.y);
+            if (gameObject.transform.position.y < 214)
+            {
+                gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
             _canvasGroup.alpha = 1f;
             _canvasGroup.blocksRaycasts = true;
+            
         }
 
         public void OnPointerDown(PointerEventData eventData)

@@ -23,7 +23,7 @@ namespace Script.UI
         public float timerStart = 6;
         private int timerStart2;
         private int active = 0;
-        public int r = 36;
+        public int r = 30;
 
         private void Start()
         {
@@ -41,16 +41,23 @@ namespace Script.UI
             });
             okButton.onClick.AddListener(() =>
             {
+                int cardA = 0;
+                int p = 0;
                 for (int i = 0; i < images.Length; i++)
                 {
-                    if ((images[i].GetComponent<Card.Card>().active == true) && (images[i].gameObject.transform.position.y !=
-                                                                            clearCard[i].gameObject.transform.position.y))
+                    for (int j = 0; j < images.Length; j++)
                     {
-                        r--;
+                        if (clearCard[i].gameObject.transform.position == images[j].gameObject.transform.position && (images[i].GetComponent<Card.Card>().active == true))
+                        {
+                            p = p + 1;
+                            r--;
+                        }
                     }
                 }
+                Debug.Log(TempClass.Ncard+3);
+                Debug.Log(p);
 
-                if (r == 36)
+                if (p == TempClass.Ncard+3)
                 {
                     var sm = GameContext.Instance.SaveService.Load<SaverModel>();
                     int sl = sm.disappeared;
