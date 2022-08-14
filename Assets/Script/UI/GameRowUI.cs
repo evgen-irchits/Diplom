@@ -24,6 +24,7 @@ public class GameRowUI : UIView
     public float timerStart = 6;
     private int timerStart2;
     public int r = 36;
+    
     private void Start()
     {
         
@@ -39,6 +40,7 @@ public class GameRowUI : UIView
 
             GetComponent<GameRowUI>().StopAllCoroutines();
             GameContext.Instance.ShowView(nameof(GameRowLavelUi));
+            r = 36;
         });
         
         verifyButton.onClick.AddListener(() =>
@@ -61,10 +63,12 @@ public class GameRowUI : UIView
                     sm.row = sm.row + 1;
                     GameContext.Instance.SaveService.Write(sm);
                     GameContext.Instance.ShowView(nameof(GameViktoryUI));
+                    r = 36;
                 }
                 else
                 {
                     GameContext.Instance.ShowView(nameof(GameViktoryUI));
+                    r = 36;
                 }
 
                 closeCard();
@@ -73,6 +77,7 @@ public class GameRowUI : UIView
             {
                 closeCard();
                 GameContext.Instance.ShowView(nameof(GameOverUI));
+                r = 36;
             }
         });
         
@@ -80,8 +85,8 @@ public class GameRowUI : UIView
 
     private void Awake()
     {
-        rectTransfrom = panel.GetComponent<RectTransform>();
-        Debug.Log(rectTransfrom.rect.width);
+        //rectTransfrom = panel.GetComponent<RectTransform>();
+        //Debug.Log(rectTransfrom.rect.width);
     }
 
     private void Update()
@@ -96,7 +101,7 @@ public class GameRowUI : UIView
             {
                 if (images[i].GetComponent<Card>().active == true)
                 {
-                    images[i].gameObject.transform.DOMove(new Vector3(Random.Range(90, 1700), 100 , 0), 0.01f);
+                    images[i].gameObject.transform.DOMove(new Vector3(Random.Range(90, 1000), 90 , 0), 0.01f);
                     images[i].gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 }
 

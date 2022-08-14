@@ -1,8 +1,4 @@
-﻿using System.Net.Mime;
-using UnityEditor.UI;
-using UnityEngine;
-using UnityEngine.UI;
-
+﻿using UnityEngine;
 namespace Script
 {
     [CreateAssetMenu(fileName = "ImageList", menuName = "ScriptableObjekt/ImageList", order = 0)]

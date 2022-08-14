@@ -26,9 +26,9 @@ namespace Script.UI
             {
                 if (TempClass.variantGame == 1)
                 {
+                    gameRowUI.r = 36;
                     GameContext.Instance.ShowView(nameof(GameRowUI));
                     gameRowUI.timerStart = 5;
-                    gameRowUI.r = 36;
                     var rom = GameContext.Instance.Lave;
                     float p = 120, p1 = 120, p2 = 120;
                     decimal x = rom / 3;
@@ -76,9 +76,9 @@ namespace Script.UI
                 }
                 if (TempClass.variantGame == 3)
                 {
+                    gameDisappearedUI.r = 36;
                     GameContext.Instance.ShowView(nameof(GameDisappearedUI));
                     gameDisappearedUI.timerStart = 6;
-                    gameDisappearedUI.r = 36;
                     var Disappeared = GameContext.Instance.Lave;
                     float p = 120, p1 = 120, p2 = 120;
                     decimal x = Disappeared / 3;

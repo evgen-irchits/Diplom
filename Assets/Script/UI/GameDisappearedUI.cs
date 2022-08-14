@@ -132,7 +132,7 @@ namespace Script.UI
                 }
 
                 TempClass.disappeared = Random.Range(0, active);
-                images[TempClass.disappeared].gameObject.transform.DOMove(new Vector3(Random.Range(90, 1700), 100, 0), 0.01f);
+                images[TempClass.disappeared].gameObject.transform.DOMove(new Vector3(Random.Range(90, 1000), 90, 0), 0.01f);
                 images[TempClass.disappeared].gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
                 for (int i = 0; i < newCard.Length; i++)
@@ -141,7 +141,7 @@ namespace Script.UI
                     if (TempClass.image[TempClass.disappeared] != ii)
                     {
                         newCard[i].GetComponent<Image>().sprite = imageList.images[ii];
-                        newCard[i].gameObject.transform.DOMove(new Vector3(Random.Range(90, 1700), 100, 0), 0.01f);
+                        newCard[i].gameObject.transform.DOMove(new Vector3(Random.Range(90, 1000), 90, 0), 0.01f);
                         newCard[i].gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                         newCard[i].gameObject.SetActive(true);
                     }
