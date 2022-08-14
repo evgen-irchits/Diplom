@@ -24,7 +24,12 @@ namespace Script.UI
             });
             settingButton.onClick.AddListener(() =>  GameContext.Instance.ShowView(nameof(SetingUI)));
         }
-        
+
+        private void Awake()
+        {
+            
+        }
+
         public override string ViewName => nameof(StartUI);
     }
 }

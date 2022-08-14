@@ -412,18 +412,19 @@ MonoBehaviour:
   Lave: 0
   views:
   - {fileID: 1799556071}
-  - {fileID: 86285786}
   - {fileID: 499730286}
   - {fileID: 1891779830}
   - {fileID: 93369226}
-  - {fileID: 1273340075}
   - {fileID: 150095405}
+  - {fileID: 1273340075}
+  - {fileID: 86285786}
   - {fileID: 2111595942}
+  - {fileID: 4214856233682206248}
   - {fileID: 2121097719}
+  - {fileID: 7993000047558628255}
   - {fileID: 234703269}
   - {fileID: 9146539589670663840}
   - {fileID: 1120947190}
-  - {fileID: 4214856233682206248}
 --- !u!224 &86285785 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3137706640230158219, guid: c6ce2db020b189847b2d808c15baf1ff, type: 3}
@@ -5108,7 +5109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6920789091995397399, guid: 7b3c39c343a3f0c47b686495350f8a65, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6920789091995397399, guid: 7b3c39c343a3f0c47b686495350f8a65, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6462,8 +6463,8 @@ RectTransform:
   - {fileID: 499730285}
   - {fileID: 1891779829}
   - {fileID: 93369225}
-  - {fileID: 1273340074}
   - {fileID: 150095404}
+  - {fileID: 1273340074}
   - {fileID: 86285785}
   - {fileID: 2111595941}
   - {fileID: 4214856233682206247}
@@ -8739,7 +8740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1036015282963829742, guid: a4fe09ff35b1fb748b084bdd56993316, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1036015282963829742, guid: a4fe09ff35b1fb748b084bdd56993316, type: 3}
       propertyPath: m_AnchorMax.x

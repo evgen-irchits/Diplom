@@ -37,8 +37,7 @@ public class GameAppearedUI : UIView
                 closeCard();
                 timerStart = 6;
             }
-
-            GetComponent<GameDisappearedUI>().StopAllCoroutines();
+            
             GameContext.Instance.ShowView(nameof(GameAppearedLavelUi));
         });
     }
@@ -52,30 +51,6 @@ public class GameAppearedUI : UIView
                 timerStart = -1;
                 timerStart2 = -1;
                 timerText.text = "0";
-                
-                float p = images[TempClass.Ncard + 3].gameObject.transform.position.x + 200;
-                images[TempClass.Ncard+4].gameObject.SetActive(true);
-                clearCard[TempClass.Ncard+4].gameObject.SetActive(true);
-                images[TempClass.Ncard+4].GetComponent<Image>().sprite = imageList.images[Random.Range(0, imageList.images.Length - 6)];
-                if (TempClass.Ncard + 3 <= 8)
-                {
-                    images[TempClass.Ncard+4].gameObject.transform.DOMove(new Vector3(p, 900), .01f);
-                    clearCard[TempClass.Ncard+4].gameObject.transform.DOMove(new Vector3(p, 900), .01f);
-                    
-                }
-                else if (TempClass.Ncard + 3 > 8 && TempClass.Ncard + 3 <= 16)
-                {
-                    images[TempClass.Ncard+4].gameObject.transform.DOMove(new Vector3(p, 690), .01f);
-                    clearCard[TempClass.Ncard+4].gameObject.transform.DOMove(new Vector3(p, 690), .01f);
-                    
-                }
-                else
-                {
-                    images[TempClass.Ncard+4].gameObject.transform.DOMove(new Vector3(p, 480), .01f);
-                    clearCard[TempClass.Ncard+4].gameObject.transform.DOMove(new Vector3(p, 480), .01f);
-                    
-                }
-                
                 for (int i = 0; i < images.Length; i++)
                 {
                     if (images[i].GetComponent<Card>().active == true)
@@ -83,22 +58,33 @@ public class GameAppearedUI : UIView
                         active = i;
                     }
                 }
-
-                for (int i = 0; i < active + 1; i++)
+                float p = images[active].gameObject.transform.position.x + 200;
+                images[active+1].gameObject.SetActive(true);
+                clearCard[active+1].gameObject.SetActive(true);
+                images[active+1].GetComponent<Image>().sprite = imageList.images[Random.Range(0, imageList.images.Length)];
+                if (active <= 8)
                 {
-                    images[i].gameObject.transform
-                        .DOMove(new Vector3(Random.Range(90, 1700), Random.Range(300, 1100), 0), 0.01f);
-                    images[i].gameObject.transform.DOMove(
-                        new Vector3(clearCard[i].gameObject.transform.position.x,
-                            clearCard[i].gameObject.transform.position.y,
-                            clearCard[i].gameObject.transform.position.z), 0.01f);
+                    images[active+1].gameObject.transform.DOMove(new Vector3(p, 900), .01f);
+                    clearCard[active+1].gameObject.transform.DOMove(new Vector3(p, 900), .01f);
+                    
                 }
-
-                int[] m = new int[TempClass.Ncard+4];
-                int x = 0;
-                while (x < TempClass.Ncard+4)
+                else if (active > 8 && active <= 16)
                 {
-                    int temp = Random.Range(0, TempClass.Ncard+4);
+                    images[active+1].gameObject.transform.DOMove(new Vector3(p, 690), .01f);
+                    clearCard[active+1].gameObject.transform.DOMove(new Vector3(p, 690), .01f);
+                    
+                }
+                else
+                {
+                    images[active+1].gameObject.transform.DOMove(new Vector3(p, 480), .01f);
+                    clearCard[active+1].gameObject.transform.DOMove(new Vector3(p, 480), .01f);
+                    
+                }
+                int[] m = new int[active+1];
+                int x = 0;
+                while (x < active+1)
+                {
+                    int temp = Random.Range(0, active+1);
                     if (m[temp] == 0)
                     {
                         m[temp] = x;
@@ -106,7 +92,7 @@ public class GameAppearedUI : UIView
                     }                
                 }
                 
-                for (int i = 0; i < TempClass.Ncard+4; i++)
+                for (int i = 0; i < active+1; i++)
                 {
                     images[i].gameObject.transform.DOMove(
                         new Vector3(clearCard[m[i]].gameObject.transform.position.x,
