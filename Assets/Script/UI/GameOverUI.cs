@@ -18,6 +18,7 @@ namespace Script.UI
         [SerializeField] private GameRowUI gameRowUI;
         [SerializeField] private GameDisappearedUI gameDisappearedUI;
         [SerializeField] private GameAppearedUI gameAppearedUI;
+        private RectTransform _rectTransform;
         void Start()
         {
             Initialize();
@@ -29,6 +30,7 @@ namespace Script.UI
                     gameRowUI.r = 36;
                     GameContext.Instance.ShowView(nameof(GameRowUI));
                     gameRowUI.timerStart = 5;
+                    float y = _rectTransform.rect.height;
                     var rom = GameContext.Instance.Lave;
                     float p = 120, p1 = 120, p2 = 120;
                     decimal x = rom / 3;
@@ -56,20 +58,20 @@ namespace Script.UI
 
                         if (j <= 8)
                         {
-                            images[j].gameObject.transform.DOMove(new Vector3(p, 900), .9f);
-                            clearCard[j].gameObject.transform.DOMove(new Vector3(p, 900), .9f);
+                            images[j].gameObject.transform.DOMove(new Vector3(p, y - 150), .9f);
+                            clearCard[j].gameObject.transform.DOMove(new Vector3(p, y - 150), .9f);
                             p = p + 200;
                         }
                         else if (j > 8 && j <= 16)
                         {
-                            images[j].gameObject.transform.DOMove(new Vector3(p1, 690), .9f);
-                            clearCard[j].gameObject.transform.DOMove(new Vector3(p1, 690), .9f);
+                            images[j].gameObject.transform.DOMove(new Vector3(p1, y - 350), .9f);
+                            clearCard[j].gameObject.transform.DOMove(new Vector3(p1, y - 350), .9f);
                             p1 = p1 + 200;
                         }
                         else
                         {
-                            images[j].gameObject.transform.DOMove(new Vector3(p2, 480), .9f);
-                            clearCard[j].gameObject.transform.DOMove(new Vector3(p2, 480), .9f);
+                            images[j].gameObject.transform.DOMove(new Vector3(p2, y - 550), .9f);
+                            clearCard[j].gameObject.transform.DOMove(new Vector3(p2, y - 550), .9f);
                             p2 = p2 + 200;
                         }
                     }
@@ -79,6 +81,7 @@ namespace Script.UI
                     gameDisappearedUI.r = 36;
                     GameContext.Instance.ShowView(nameof(GameDisappearedUI));
                     gameDisappearedUI.timerStart = 6;
+                    float y = _rectTransform.rect.height;
                     var Disappeared = GameContext.Instance.Lave;
                     float p = 120, p1 = 120, p2 = 120;
                     decimal x = Disappeared / 3;
@@ -106,20 +109,20 @@ namespace Script.UI
 
                         if (j <= 8)
                         {
-                            images[j].gameObject.transform.DOMove(new Vector3(p, 900), .9f);
-                            clearCard[j].gameObject.transform.DOMove(new Vector3(p, 900), .9f);
+                            images[j].gameObject.transform.DOMove(new Vector3(p, y - 150), .9f);
+                            clearCard[j].gameObject.transform.DOMove(new Vector3(p, y - 150), .9f);
                             p = p + 200;
                         }
                         else if (j > 8 && j <= 16)
                         {
-                            images[j].gameObject.transform.DOMove(new Vector3(p1, 690), .9f);
-                            clearCard[j].gameObject.transform.DOMove(new Vector3(p1, 690), .9f);
+                            images[j].gameObject.transform.DOMove(new Vector3(p1, y - 350), .9f);
+                            clearCard[j].gameObject.transform.DOMove(new Vector3(p1, y - 350), .9f);
                             p1 = p1 + 200;
                         }
                         else
                         {
-                            images[j].gameObject.transform.DOMove(new Vector3(p2, 480), .9f);
-                            clearCard[j].gameObject.transform.DOMove(new Vector3(p2, 480), .9f);
+                            images[j].gameObject.transform.DOMove(new Vector3(p2, y - 550), .9f);
+                            clearCard[j].gameObject.transform.DOMove(new Vector3(p2, y - 550), .9f);
                             p2 = p2 + 200;
                         }
                     }
