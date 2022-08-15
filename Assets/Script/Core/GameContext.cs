@@ -17,6 +17,8 @@ namespace Script.Core
 
         public ISaveService SaveService { get; private set; }
 
+        private FirebaseService _firebase;
+
         private void Start()
         {
             _currentView = views.First(v => v.ViewName == nameof(StartUI));
@@ -26,8 +28,9 @@ namespace Script.Core
         private void Awake()
         {
             SaveService = new SaveService();
+            _firebase = new FirebaseService();
 
-            CheckModels();
+                CheckModels();
 
             if (Instance == null) Instance = this;
         }

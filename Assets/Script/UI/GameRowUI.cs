@@ -20,6 +20,9 @@ public class GameRowUI : UIView
     [SerializeField] private GameObject panel;
     [SerializeField] private GameContext gameContext;
     [SerializeField] private Text timerText;
+    public AudioSource myfx;
+    public AudioClip myVerify;
+    public AudioClip myGameOver;
     private RectTransform rectTransfrom;
     public float timerStart = 6;
     private int timerStart2;
@@ -56,6 +59,7 @@ public class GameRowUI : UIView
 
             if (r == 36)
             {
+                ClickSourseVerify();
                 var sm = GameContext.Instance.SaveService.Load<SaverModel>();
                 int sl = sm.row;
                 if (sl == gameContext.Lave + 1)
@@ -76,6 +80,7 @@ public class GameRowUI : UIView
             else
             {
                 closeCard();
+                ClickSourseGameOver();
                 GameContext.Instance.ShowView(nameof(GameOverUI));
                 r = 36;
             }
@@ -121,5 +126,17 @@ public class GameRowUI : UIView
             images[i].gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
         }
     }
+    
+    public void ClickSourseVerify()
+    {
+        myfx.PlayOneShot(myVerify);
+    }
+    
+    public void ClickSourseGameOver()
+    {
+        myfx.PlayOneShot(myGameOver);
+    }
+    
+    
     public override string ViewName => nameof(GameRowUI);
 }

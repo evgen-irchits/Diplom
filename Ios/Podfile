@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '11.0'
+
+target 'UnityFramework' do
+  pod 'Firebase/Analytics', '8.11.0'
+  pod 'Firebase/Core', '8.11.0'
+  pod 'Firebase/Crashlytics', '8.11.0'
+end
+target 'Unity-iPhone' do
+end
+use_frameworks!

@@ -20,6 +20,9 @@ namespace Script.UI
         [SerializeField] private ImageList imageList;
         [SerializeField] private Text timerText;
         [SerializeField] private GameContext gameContext;
+        public AudioSource myfx;
+        public AudioClip myVerify;
+        public AudioClip myGameOver;
         public float timerStart = 6;
         private int timerStart2;
         private int active = 0;
@@ -59,6 +62,7 @@ namespace Script.UI
 
                 if (p == TempClass.Ncard+3)
                 {
+                    ClickSourseVerify();
                     var sm = GameContext.Instance.SaveService.Load<SaverModel>();
                     int sl = sm.disappeared;
                     if (sl == gameContext.Lave + 1)
@@ -76,6 +80,7 @@ namespace Script.UI
                 }
                 else
                 {
+                    ClickSourseGameOver();
                     closeCard();
                     GameContext.Instance.ShowView(nameof(GameOverUI));
                 }
@@ -168,6 +173,15 @@ namespace Script.UI
             {
                 newCard[i].gameObject.SetActive(false);
             }
+        }
+        public void ClickSourseVerify()
+        {
+            myfx.PlayOneShot(myVerify);
+        }
+    
+        public void ClickSourseGameOver()
+        {
+            myfx.PlayOneShot(myGameOver);
         }
         public override string ViewName => nameof(GameDisappearedUI);
     }

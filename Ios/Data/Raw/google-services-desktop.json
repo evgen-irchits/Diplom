@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "431274264512",
+    "project_id": "diplom-1c2df",
+    "storage_bucket": "diplom-1c2df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431274264512:android:4969766945ae57b4d36a25",
+        "android_client_info": {
+          "package_name": "com.irchicE.doplom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "431274264512-0brv63gke4e74n6cv2kko77cgiivu9a3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcAEt8oTaqdEOjhTr96-KsyWI0uXpiKk8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "431274264512-0brv63gke4e74n6cv2kko77cgiivu9a3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "431274264512-tvv9q58qisn6kkl3185m0husesjdf41h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.irchicE.doplom"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
